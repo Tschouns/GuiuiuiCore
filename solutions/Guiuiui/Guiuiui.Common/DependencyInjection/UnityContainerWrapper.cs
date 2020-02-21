@@ -6,47 +6,46 @@ using Unity.Lifetime;
 namespace Guiuiui.Common.DependencyInjection
 {
     /// <summary>
-    /// Implements <see cref="IIocContainer"/> and wraps a Unity IOC container.
+    /// Implements <see cref="IRegister"/> and <see cref="IResolve"/> and wraps a Unity IOC container.
     /// </summary>
-    internal class UnityContainerWrapper : IIocContainer, IDisposable
+    internal class UnityContainerWrapper : IRegister, IResolve, IDisposable
     {
         /// <summary>
         /// Stores the actual Unity IOC container.
         /// </summary>
-        private readonly UnityContainer _iocContainer = new UnityContainer();
+        private readonly UnityContainer iocContainer = new UnityContainer();
 
         /// <summary>
-        /// See <see cref="IIocContainer.RegisterSingleton{TInterface, TImplementation}"/>.
+        /// See <see cref="IRegister.RegisterSingleton{TInterface, TImplementation}"/>.
         /// </summary>
         public void RegisterSingleton<TInterface, TImplementation>()
             where TInterface : class
             where TImplementation : TInterface
         {
-            this._iocContainer.RegisterType<TInterface, TImplementation>(new PerThreadLifetimeManager());
+            this.iocContainer.RegisterType<TInterface, TImplementation>(new PerThreadLifetimeManager());
         }
 
         /// <summary>
-        /// See <see cref="IIocContainer.RegisterSingleton"/>.
-        /// </summary>
-        public void RegisterSingleton(Type interfaceType, Type implementationType)
+        /// See <see cref="IRegister.RegisterInstance{TInterface, TInstance}(TInstance)"/>.
+        /// </summary
+        void IRegister.RegisterInstance<TInterface, TInstance>(TInstance instance)
         {
-            ArgumentChecks.AssertNotNull(interfaceType, nameof(interfaceType));
-            ArgumentChecks.AssertNotNull(implementationType, nameof(implementationType));
+            ArgumentChecks.AssertNotNull(instance, nameof(instance));
 
-            this._iocContainer.RegisterType(interfaceType, implementationType, new PerThreadLifetimeManager());
+            this.iocContainer.RegisterInstance<TInterface>(instance);
         }
 
         /// <summary>
-        /// See <see cref="IIocContainer.Resolve{TInterface}"/>.
+        /// See <see cref="IResolve.Resolve{TInterface}"/>.
         /// </summary>
         public TInterface Resolve<TInterface>() where TInterface : class
         {
-            if (!this._iocContainer.IsRegistered<TInterface>())
+            if (!this.iocContainer.IsRegistered<TInterface>())
             {
                 return null;
             }
 
-            var instance = this._iocContainer.Resolve<TInterface>();
+            var instance = this.iocContainer.Resolve<TInterface>();
 
             return instance;
         }
@@ -56,7 +55,7 @@ namespace Guiuiui.Common.DependencyInjection
         /// </summary>
         public void Dispose()
         {
-            this._iocContainer.Dispose();
+            this.iocContainer.Dispose();
         }
     }
 }

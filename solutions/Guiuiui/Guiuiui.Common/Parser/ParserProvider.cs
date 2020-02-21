@@ -8,12 +8,12 @@ namespace Guiuiui.Common.Parser
     /// </summary>
     public class ParserProvider : IParserProvider
     {
-        private readonly IIocContainer container;
+        private readonly IResolve container;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ParserProvider"/> class.
         /// </summary>
-        public ParserProvider(IIocContainer container)
+        public ParserProvider(IResolve container)
         {
             ArgumentChecks.AssertNotNull(container, nameof(container));
 
