@@ -16,6 +16,27 @@ namespace Guiuiui.Common.Tests
         }
 
         [Fact]
+        public void TextConverterRegistryProperty_GetInstance_InstanceIsReturned()
+        {
+            // Act
+            var registry = ToolBox.TextConverterRegistry;
+
+            // Assert
+            Assert.NotNull(registry);
+        }
+
+        [Fact]
+        public void TextConverterRegistryProperty_GetInstance_SameInstanceAsTextConverterProviderIsReturned()
+        {
+            // Act
+            var registry = ToolBox.TextConverterRegistry;
+            var provider = ToolBox.TextConverterRegistry;
+
+            // Assert
+            Assert.Same(provider, registry);
+        }
+
+        [Fact]
         public void TextConvertersGetTextConverter_UnsupportedType_DefaultInstanceIsReturnedWhichCallsToString()
         {
             // Arrange

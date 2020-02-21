@@ -24,6 +24,11 @@ namespace Guiuiui.Common
         /// </summary>
         public static ITextConverterProvider TextConverters => lazyContainer.Value.Resolve<ITextConverterProvider>();
 
+        /// <summary>
+        /// Gets the <see cref="ITextConverterRegistry"/> allowing to register specific text converters for any type.
+        /// </summary>
+        public static ITextConverterRegistry TextConverterRegistry => lazyContainer.Value.Resolve<ITextConverterRegistry>();
+
         private static IResolve SetupIocContainer()
         {
             var container = new UnityContainerWrapper();
