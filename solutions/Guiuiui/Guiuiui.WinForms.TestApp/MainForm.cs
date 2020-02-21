@@ -1,5 +1,11 @@
 ﻿namespace Guiuiui.WinForms.TestApp
 {
+    using Guiuiui.Common;
+    using Guiuiui.WinForms.Controls;
+    using Guiuiui.WinForms.TestApp.SampleModels;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Windows.Forms;
 
     /// <summary>
@@ -7,177 +13,113 @@
     /// </summary>
     public partial class MainForm : Form
     {
-        // Person
-        //private readonly IListView<Person> _personListView;
-        //private readonly IViewModel<Person> _personViewModel;
-
-        // Address
-        //private readonly IListView<Address> _addressListView;
-        //private readonly IViewModel<Address> _addressViewModel1;
-        //private readonly IViewModel<Address> _addressViewModel2;
-
-        // Mock data
-        //private readonly IList<Person> _persons;
+        private readonly ViewModel<Person> personViewModel = new ViewModel<Person>();
 
         public MainForm()
         {
             this.InitializeComponent();
+            this.SetupDataBinding();
+            this.FillComboBoxes();
 
-            //GuiuiuiToolBox.TextConverterRegistry.RegisterTextConverter(new GenderTextConverter());
-            //GuiuiuiToolBox.TextConverterRegistry.RegisterTextConverter(new AddressTextConverter());
-
-            //this._personListView = GuiuiuiToolBox.ListViewFactory.Create<Person>(this.personListView);
-            //this._personViewModel = GuiuiuiToolBox.ViewModelFactory.Create<Person>();
-
-            //this._addressListView = GuiuiuiToolBox.ListViewFactory.Create<Address>(this.addressListView);
-            //this._addressViewModel1 = GuiuiuiToolBox.ViewModelFactory.Create<Address>();
-            //this._addressViewModel2 = GuiuiuiToolBox.ViewModelFactory.Create<Address>();
-
-            //this.SetupDataBinding();
-            //this.SetupAddRemoveControllers();
-            //this.FillComboBoxes();
-
-            //this._persons = this.CreatePersons();
-
-            //this._personListView.SetListItemsToDisplay(this._persons);
+            this.personViewModel.Model = this.CreatePersons().First();
         }
 
-        //private void SetupDataBinding()
-        //{
-        //    // "Persons" list view
-        //    this._personListView
-        //        .AddColumnBindingForProperty(p => p.FirstName)
-        //        .AddColumnBindingForProperty(p => p.LastName);
+        private void SetupDataBinding()
+        {
+            this.personViewModel
+                .BindProperty(p => p.FirstName, (p, v) => p.FirstName = v)
+                .ToControl(new TextBoxAdapter<string>(this.firstNameTextBox));
 
-        //    this._personListView.AddViewModelForSelectedItem(this._personViewModel);
+            this.personViewModel
+                .BindProperty(p => p.LastName, (p, v) => p.LastName = v)
+                .ToControl(new TextBoxAdapter<string>(this.nameTextBox));
 
-        //    // "Person" view model
-        //    this._personViewModel.BindPropertyGet(p => p.Summary).ToLabel(this.summaryLabel);
+            this.personViewModel
+                .BindProperty(p => p.LastName, (p, v) => p.LastName = v)
+                .ToControl(new TextBoxAdapter<string>(this.nameTextBox));
+        }
 
-        //    this._personViewModel.BindPropertyGetAndSet(p => p.FirstName, (p, v) => p.FirstName = v).ToTextBox(this.firstNameTextBox);
-        //    this._personViewModel.BindPropertyGetAndSet(p => p.LastName, (p, v) => p.LastName = v).ToTextBox(this.nameTextBox);
-        //    this._personViewModel.BindPropertyGet(p => p.FullName).ToTextBox(this.fullNameTextBox);
-            
-        //    this._personViewModel.BindPropertyGetAndSet(p => p.DateOfBirth, (p, v) => p.DateOfBirth = v).ToDateTimePicker(this.dateOfBirthDateTimePicker);
-        //    this._personViewModel.BindPropertyGetAndSet(p => p.Gender, (p, v) => p.Gender = v).ToComboBox(this.genderComboBox);
-        //    this._personViewModel.BindPropertyGetAndSet(p => p.IsVegetarian, (p, v) => p.IsVegetarian = v).ToCheckBox(this.isVegetarianCheckBox);
-
-        //    this._personViewModel.BindListProperty(p => p.Addresses).ToListControl(this._addressListView);
-
-        //    // "Addresses" list view
-        //    this._addressListView.AddViewModelForSelectedItem(this._addressViewModel1);
-        //    this._addressListView.AddViewModelForSelectedItem(this._addressViewModel2);
-
-        //    // "Address 1" view model
-        //    this._addressViewModel1.BindPropertyGetAndSet(a => a.Street, (a, v) => a.Street = v).ToTextBox(this.streetTextBox1);
-        //    this._addressViewModel1.BindPropertyGetAndSet(a => a.PostalCode, (a, v) => a.PostalCode = v).ToTextBox(this.postalCodeTextBox1);
-        //    this._addressViewModel1.BindPropertyGetAndSet(a => a.City, (a, v) => a.City = v).ToTextBox(this.cityTextBox1);
-
-        //    // "Address 2" view model
-        //    this._addressViewModel2.BindPropertyGetAndSet(a => a.Street, (a, v) => a.Street = v).ToTextBox(this.streetTextBox2);
-        //    this._addressViewModel2.BindPropertyGetAndSet(a => a.PostalCode, (a, v) => a.PostalCode = v).ToTextBox(this.postalCodeTextBox2);
-        //    this._addressViewModel2.BindPropertyGetAndSet(a => a.City, (a, v) => a.City = v).ToTextBox(this.cityTextBox2);
-        //}
-
-        //private void SetupAddRemoveControllers()
-        //{
-        //    // "Persons"
-        //    var personAddRemoveController = GuiuiuiToolBox.AddRemoveFactory.CreateAddRemoveController(
-        //        () => this._persons,
-        //        this._personListView);
-
-        //    this.personAddRemoveButtons.Initialize(personAddRemoveController);
-
-        //    // "Addresses"
-        //    var addressAddRemoveController = GuiuiuiToolBox.AddRemoveFactory.CreateAddRemoveController(
-        //        this._personViewModel,
-        //        p => p.Addresses,
-        //        this._addressListView);
-
-        //    this.addressAddRemoveButtons.Initialize(addressAddRemoveController);
-        //}
-
-        //private void FillComboBoxes()
-        //{
-        //    this.genderComboBox.Items.Add(Gender.Male);
-        //    this.genderComboBox.Items.Add(Gender.Female);
-        //}
+        private void FillComboBoxes()
+        {
+            this.genderComboBox.Items.Add(Gender.Male);
+            this.genderComboBox.Items.Add(Gender.Female);
+        }
 
         /// <summary>
         /// Just creates some dummy data for demonstration purposes.
         /// </summary>
-        //private IList<Person> CreatePersons()
-        //{
-        //    var fritzMeier = new Person
-        //    {
-        //        LastName = "Meier",
-        //        FirstName = "Fritz",
-        //        DateOfBirth = new DateTime(1983, 4, 18),
-        //        Gender = Gender.Male,
-        //        IsVegetarian = true
-        //    };
+        private IList<Person> CreatePersons()
+        {
+            var fritzMeier = new Person
+            {
+                LastName = "Meier",
+                FirstName = "Fritz",
+                DateOfBirth = new DateTime(1983, 4, 18),
+                Gender = Gender.Male,
+                IsVegetarian = true
+            };
 
-        //    var hugoHugentobler = new Person
-        //    {
-        //        LastName = "Hugentobler",
-        //        FirstName = "Hugo",
-        //        DateOfBirth = new DateTime(1971, 11, 2),
-        //        Gender = Gender.Undefined
-        //    };
+            var hugoHugentobler = new Person
+            {
+                LastName = "Hugentobler",
+                FirstName = "Hugo",
+                DateOfBirth = new DateTime(1971, 11, 2),
+                Gender = Gender.Undefined
+            };
 
-        //    hugoHugentobler.Addresses.Add(new Address
-        //    {
-        //        Street = "Tobelstrasse 15",
-        //        PostalCode = 1234,
-        //        City = "Staffelshausen"
-        //    });
+            hugoHugentobler.Addresses.Add(new Address
+            {
+                Street = "Tobelstrasse 15",
+                PostalCode = 1234,
+                City = "Staffelshausen"
+            });
 
-        //    var hubertStaffelbach = new Person
-        //    {
-        //        LastName = "Staffelbach",
-        //        FirstName = "Hubert",
-        //        DateOfBirth = new DateTime(1955, 8, 30),
-        //        Gender = Gender.Male
-        //    };
+            var hubertStaffelbach = new Person
+            {
+                LastName = "Staffelbach",
+                FirstName = "Hubert",
+                DateOfBirth = new DateTime(1955, 8, 30),
+                Gender = Gender.Male
+            };
 
-        //    hubertStaffelbach.Addresses.Add(new Address
-        //    {
-        //        Street = "Staffelweg 12",
-        //        PostalCode = 1234,
-        //        City = "Staffelshausen"
-        //    });
+            hubertStaffelbach.Addresses.Add(new Address
+            {
+                Street = "Staffelweg 12",
+                PostalCode = 1234,
+                City = "Staffelshausen"
+            });
 
-        //    hubertStaffelbach.Addresses.Add(new Address
-        //    {
-        //        Street = "Blechheimstrasse 76",
-        //        PostalCode = 5432,
-        //        City = "Brunzilausi"
-        //    });
+            hubertStaffelbach.Addresses.Add(new Address
+            {
+                Street = "Blechheimstrasse 76",
+                PostalCode = 5432,
+                City = "Brunzilausi"
+            });
 
-        //    hubertStaffelbach.Addresses.Add(new Address
-        //    {
-        //        Street = "Holzweg 4",
-        //        PostalCode = 8866,
-        //        City = "Knittlingen"
-        //    });
+            hubertStaffelbach.Addresses.Add(new Address
+            {
+                Street = "Holzweg 4",
+                PostalCode = 8866,
+                City = "Knittlingen"
+            });
 
-        //    var gunhildeStaffelbach = new Person
-        //    {
-        //        LastName = "Staffelbach",
-        //        FirstName = "Gunhilde",
-        //        DateOfBirth = new DateTime(1966, 3, 3),
-        //        Gender = Gender.Female
-        //    };
+            var gunhildeStaffelbach = new Person
+            {
+                LastName = "Staffelbach",
+                FirstName = "Gunhilde",
+                DateOfBirth = new DateTime(1966, 3, 3),
+                Gender = Gender.Female
+            };
 
-        //    var persons = new Person[]
-        //    {
-        //        fritzMeier,
-        //        hugoHugentobler,
-        //        hubertStaffelbach,
-        //        gunhildeStaffelbach
-        //    };
+            var persons = new List<Person>
+            {
+                fritzMeier,
+                hugoHugentobler,
+                hubertStaffelbach,
+                gunhildeStaffelbach
+            };
 
-        //    return persons.ToList();
-        //}
+            return persons;
+        }
     }
 }
