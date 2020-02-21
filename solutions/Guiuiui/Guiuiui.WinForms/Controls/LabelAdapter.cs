@@ -1,4 +1,5 @@
-﻿using Guiuiui.Common.Controls;
+﻿using Guiuiui.Common;
+using Guiuiui.Common.Controls;
 using Guiuiui.Common.RuntimeChecks;
 using Guiuiui.Common.TextConverter;
 using System;
@@ -20,15 +21,25 @@ namespace Guiuiui.WinForms.Controls
         /// <summary>
         /// Initializes a new instance of the <see cref="LabelAdapter{TValue}"/> class.
         /// </summary>
-        public LabelAdapter(
-            ITextConverter<TValue> textConverter,
-            Label label)
+        public LabelAdapter(Label label)
+            : this(
+                  label,
+                  ToolBox.TextConverters.GetTextConverter<TValue>())
         {
-            ArgumentChecks.AssertNotNull(textConverter, nameof(textConverter));
-            ArgumentChecks.AssertNotNull(label, nameof(label));
+        }
 
-            this.textConverter = textConverter;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LabelAdapter{TValue}"/> class.
+        /// </summary>
+        public LabelAdapter(
+            Label label,
+            ITextConverter<TValue> textConverter)
+        {
+            ArgumentChecks.AssertNotNull(label, nameof(label));
+            ArgumentChecks.AssertNotNull(textConverter, nameof(textConverter));
+
             this.label = label;
+            this.textConverter = textConverter;
         }
 
         /// <summary>

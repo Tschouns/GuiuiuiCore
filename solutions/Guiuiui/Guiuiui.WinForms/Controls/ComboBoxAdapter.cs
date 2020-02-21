@@ -1,4 +1,5 @@
-﻿using Guiuiui.Common.Controls;
+﻿using Guiuiui.Common;
+using Guiuiui.Common.Controls;
 using Guiuiui.Common.RuntimeChecks;
 using Guiuiui.Common.TextConverter;
 using System;
@@ -21,15 +22,25 @@ namespace Guiuiui.WinForms.Controls
         /// <summary>
         /// Initializes a new instance of the <see cref="ComboBoxAdapter{TValue}"/> class.
         /// </summary>
-        public ComboBoxAdapter(
-            ITextConverter<TValue> textConverter,
-            ComboBox comboBox)
+        public ComboBoxAdapter(ComboBox comboBox)
+            : this(
+                  comboBox,
+                  ToolBox.TextConverters.GetTextConverter<TValue>())
         {
-            ArgumentChecks.AssertNotNull(textConverter, nameof(textConverter));
-            ArgumentChecks.AssertNotNull(comboBox, nameof(comboBox));
+        }
 
-            this.textConverter = textConverter;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ComboBoxAdapter{TValue}"/> class.
+        /// </summary>
+        public ComboBoxAdapter(
+            ComboBox comboBox,
+            ITextConverter<TValue> textConverter)
+        {
+            ArgumentChecks.AssertNotNull(comboBox, nameof(comboBox));
+            ArgumentChecks.AssertNotNull(textConverter, nameof(textConverter));
+
             this.comboBox = comboBox;
+            this.textConverter = textConverter;
 
             this.comboBox.Format += this.ComboBox_Format;
             this.comboBox.SelectedValueChanged += this.ComboBox_SelectedValueChanged;

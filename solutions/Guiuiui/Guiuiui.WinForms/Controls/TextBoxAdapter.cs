@@ -1,4 +1,5 @@
-﻿using Guiuiui.Common.Controls;
+﻿using Guiuiui.Common;
+using Guiuiui.Common.Controls;
 using Guiuiui.Common.Parser;
 using Guiuiui.Common.RuntimeChecks;
 using Guiuiui.Common.TextConverter;
@@ -23,18 +24,30 @@ namespace Guiuiui.WinForms.Controls
         /// <summary>
         /// Initializes a new instance of the <see cref="TextBoxAdapter{TValue}"/> class.
         /// </summary>
-        public TextBoxAdapter(
-            ITextConverter<TValue> textConverter,
-            IParser<TValue> parser,
-            TextBox textBox)
+        public TextBoxAdapter(TextBox textBox)
+            : this(
+                  textBox,
+                  ToolBox.TextConverters.GetTextConverter<TValue>(),
+                  ToolBox.Parsers.GetParser<TValue>())
         {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TextBoxAdapter{TValue}"/> class.
+        /// </summary>
+        public TextBoxAdapter(
+            TextBox textBox,
+            ITextConverter<TValue> textConverter,
+            IParser<TValue> parser)
+        {
+            ArgumentChecks.AssertNotNull(textBox, nameof(textBox));
             ArgumentChecks.AssertNotNull(textConverter, nameof(textConverter));
             ArgumentChecks.AssertNotNull(parser, nameof(parser));
-            ArgumentChecks.AssertNotNull(textBox, nameof(textBox));
 
+            this._textBox = textBox;
             this._textConverter = textConverter;
             this._parser = parser;
-            this._textBox = textBox;
+
             this._currentValue = this._parser.TryParse(textBox.Text).Result;
 
             this._textBox.TextChanged += this.TextBox_TextChanged;
