@@ -1,4 +1,6 @@
 ﻿
+using Guiuiui.Common.TestTypes.Controls;
+using Guiuiui.Common.TestTypes.Models;
 using Xunit;
 
 namespace Guiuiui.Common.Tests
@@ -52,6 +54,26 @@ namespace Guiuiui.Common.Tests
 
             // Assert
             Assert.Equal(1, eventFired);
+        }
+
+        [Fact]
+        public void BindPropertyReadOnly_PersonFirstName_FirstNameIsDisplayedInControl()
+        {
+            // Arrange
+            var candidate = new ViewModel<Person>();
+            var displayedValue = string.Empty;
+            var mockControl = new MockDataControlAdapter<string>(value => displayedValue = value);
+            var model = new Person
+            {
+                FirstName = "Foo"
+            };
+
+            // Act
+            candidate.BindPropertyReadOnly(p => p.FirstName).ToControl(mockControl);
+            candidate.Model = model;
+
+            // Assert
+            Assert.Equal(model.FirstName, displayedValue);
         }
     }
 }
