@@ -20,7 +20,7 @@ namespace Guiuiui.Common
         where TModel : class
     {
         private readonly IList<IPropertyBinding> bindings = new List<IPropertyBinding>();
-        private TModel _model = null;
+        private TModel model = null;
 
         /// <summary>
         /// See <see cref="IObservable.ValueChanged"/>.
@@ -32,10 +32,15 @@ namespace Guiuiui.Common
         /// </summary>
         public TModel Model
         {
-            get { return this._model; }
+            get { return this.model; }
             set
             {
-                this._model = value;
+                if (object.Equals(this.model, value))
+                {
+                    return;
+                }
+
+                this.model = value;
                 this.OnValueChanged();
             }
         }
