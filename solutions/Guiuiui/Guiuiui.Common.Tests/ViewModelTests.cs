@@ -57,7 +57,45 @@ namespace Guiuiui.Common.Tests
         }
 
         [Fact]
-        public void BindPropertyReadOnly_PersonFirstName_FirstNameIsDisplayedInControl()
+        public void BindPropertyReadOnly_WithoutModel_ControlIsInitialized()
+        {
+            // Arrange
+            var candidate = new ViewModel<Person>();
+            var displayedValue = "rubbish";
+            var mockControl = new MockDataControlAdapter<string>(value => displayedValue = value);
+
+            // Act
+            candidate.BindPropertyReadOnly(p => p.FirstName).ToControl(mockControl);
+
+            // Assert
+            Assert.Equal(default, displayedValue);
+            Assert.Equal(default, mockControl.Value);
+        }
+
+        [Fact]
+        public void BindPropertyReadOnly_WithModel_ModelPropertyIsDisplayedRightAway()
+        {
+            // Arrange
+            var candidate = new ViewModel<Person>();
+            var displayedValue = "rubbish";
+            var mockControl = new MockDataControlAdapter<string>(value => displayedValue = value);
+            
+            var model = new Person
+            {
+                FirstName = "Foo"
+            };
+            candidate.Model = model;
+
+            // Act
+            candidate.BindPropertyReadOnly(p => p.FirstName).ToControl(mockControl);
+
+            // Assert
+            Assert.Equal(model.FirstName, displayedValue);
+            Assert.Equal(model.FirstName, mockControl.Value);
+        }
+
+        [Fact]
+        public void BindPropertyReadOnly_SetModelAfterwards_ModelPropertyIsDisplayed()
         {
             // Arrange
             var candidate = new ViewModel<Person>();
@@ -74,6 +112,7 @@ namespace Guiuiui.Common.Tests
 
             // Assert
             Assert.Equal(model.FirstName, displayedValue);
+            Assert.Equal(model.FirstName, mockControl.Value);
         }
     }
 }
