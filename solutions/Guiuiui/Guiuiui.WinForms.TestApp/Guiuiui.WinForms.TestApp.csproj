@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Guiuiui.Common.TestTypes\Guiuiui.Common.TestTypes.csproj" />
     <ProjectReference Include="..\Guiuiui.Common\Guiuiui.Common.csproj" />
     <ProjectReference Include="..\Guiuiui.WinForms\Guiuiui.WinForms.csproj" />
   </ItemGroup>

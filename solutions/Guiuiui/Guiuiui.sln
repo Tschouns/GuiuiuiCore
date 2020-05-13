@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Guiuiui.WinForms", "Guiuiui
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Guiuiui.WinForms.TestApp", "Guiuiui.WinForms.TestApp\Guiuiui.WinForms.TestApp.csproj", "{675C313A-4973-45CF-AD4C-64633787E1F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guiuiui.Common.Tests", "Guiuiui.Common.Tests\Guiuiui.Common.Tests.csproj", "{D1C2EAEF-C8B3-4376-A78B-5A233663514C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Guiuiui.Common.Tests", "Guiuiui.Common.Tests\Guiuiui.Common.Tests.csproj", "{D1C2EAEF-C8B3-4376-A78B-5A233663514C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guiuiui.Common.TestTypes", "Guiuiui.Common.TestTypes\Guiuiui.Common.TestTypes.csproj", "{F01DD49B-4121-48B9-93F0-97649AE83C36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D1C2EAEF-C8B3-4376-A78B-5A233663514C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1C2EAEF-C8B3-4376-A78B-5A233663514C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1C2EAEF-C8B3-4376-A78B-5A233663514C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F01DD49B-4121-48B9-93F0-97649AE83C36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F01DD49B-4121-48B9-93F0-97649AE83C36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F01DD49B-4121-48B9-93F0-97649AE83C36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F01DD49B-4121-48B9-93F0-97649AE83C36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

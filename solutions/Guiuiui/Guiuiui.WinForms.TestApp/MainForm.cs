@@ -1,13 +1,13 @@
-﻿namespace Guiuiui.WinForms.TestApp
-{
-    using Guiuiui.Common;
-    using Guiuiui.WinForms.Controls;
-    using Guiuiui.WinForms.TestApp.SampleModels;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Windows.Forms;
+﻿using Guiuiui.Common;
+using Guiuiui.Common.TestTypes.Models;
+using Guiuiui.WinForms.Controls;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
+namespace Guiuiui.WinForms.TestApp
+{
     /// <summary>
     /// Merely a little test bench for the <see cref="Guiuiui"/> namespace...
     /// </summary>
@@ -67,13 +67,6 @@
                 Gender = Gender.Undefined
             };
 
-            hugoHugentobler.Addresses.Add(new Address
-            {
-                Street = "Tobelstrasse 15",
-                PostalCode = 1234,
-                City = "Staffelshausen"
-            });
-
             var hubertStaffelbach = new Person
             {
                 LastName = "Staffelbach",
@@ -81,27 +74,6 @@
                 DateOfBirth = new DateTime(1955, 8, 30),
                 Gender = Gender.Male
             };
-
-            hubertStaffelbach.Addresses.Add(new Address
-            {
-                Street = "Staffelweg 12",
-                PostalCode = 1234,
-                City = "Staffelshausen"
-            });
-
-            hubertStaffelbach.Addresses.Add(new Address
-            {
-                Street = "Blechheimstrasse 76",
-                PostalCode = 5432,
-                City = "Brunzilausi"
-            });
-
-            hubertStaffelbach.Addresses.Add(new Address
-            {
-                Street = "Holzweg 4",
-                PostalCode = 8866,
-                City = "Knittlingen"
-            });
 
             var gunhildeStaffelbach = new Person
             {

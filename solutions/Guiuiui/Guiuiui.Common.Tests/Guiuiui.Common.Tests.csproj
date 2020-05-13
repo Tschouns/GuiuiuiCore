@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Guiuiui.Common.TestTypes\Guiuiui.Common.TestTypes.csproj" />
     <ProjectReference Include="..\Guiuiui.Common\Guiuiui.Common.csproj" />
   </ItemGroup>
 

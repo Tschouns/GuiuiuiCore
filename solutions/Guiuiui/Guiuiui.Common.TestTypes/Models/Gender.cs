@@ -1,5 +1,4 @@
-﻿
-namespace Guiuiui.WinForms.TestApp.SampleModels
+﻿namespace Guiuiui.Common.TestTypes.Models
 {
     public enum Gender
     {
