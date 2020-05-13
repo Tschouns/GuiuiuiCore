@@ -28,7 +28,7 @@ namespace Guiuiui.Common
         public event EventHandler ValueChanged;
 
         /// <summary>
-        /// See <see cref="IViewModel{TModel}.Model"/>.
+        /// See <see cref="IHaveModel{TModel}.Model"/>.
         /// </summary>
         public TModel Model
         {
