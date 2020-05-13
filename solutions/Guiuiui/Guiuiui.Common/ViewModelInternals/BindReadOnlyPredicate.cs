@@ -16,7 +16,7 @@ namespace Guiuiui.Common.ViewModelInternals
     /// <typeparam name="TPropertyValue">
     /// The property value type
     /// </typeparam>
-    public class BindReadOnlyPredicate<TModel, TPropertyValue> : IBindPredicate<TPropertyValue>
+    internal class BindReadOnlyPredicate<TModel, TPropertyValue> : IBindPredicate<TPropertyValue>
         where TModel : class
     {
         // These fields are needed to create the data binding.

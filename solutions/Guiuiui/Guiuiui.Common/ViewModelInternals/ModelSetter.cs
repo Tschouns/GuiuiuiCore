@@ -7,7 +7,7 @@ namespace Guiuiui.Common.ViewModelInternals
     /// <summary>
     /// See <see cref="ISet{TPropertyValue}"/>.
     /// </summary>
-    public class ModelSetter<TModel, TModelContainer, TPropertyValue> : ISet<TPropertyValue>
+    internal class ModelSetter<TModel, TModelContainer, TPropertyValue> : ISet<TPropertyValue>
         where TModel : class
         where TModelContainer : class, IHaveModel<TModel>, INotifiable
     {

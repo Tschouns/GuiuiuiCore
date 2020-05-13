@@ -8,7 +8,7 @@ namespace Guiuiui.Common.ViewModelInternals
     /// <summary>
     /// See <see cref="IPropertyBinding"/>.
     /// </summary>
-    public class PropertyBinding<TPropertyValue> : IPropertyBinding
+    internal class PropertyBinding<TPropertyValue> : IPropertyBinding
     {
         private readonly IObservable model;
         private readonly IGet<TPropertyValue> getter;

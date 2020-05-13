@@ -7,7 +7,7 @@ namespace Guiuiui.Common.ViewModelInternals
     /// <summary>
     /// See <see cref="IGet{TPropertyValue}"/>.
     /// </summary>
-    public class ModelGetter<TModel, TModelContainer, TPropertyValue> : IGet<TPropertyValue>
+    internal class ModelGetter<TModel, TModelContainer, TPropertyValue> : IGet<TPropertyValue>
         where TModel : class
         where TModelContainer : class, IHaveModel<TModel>
     {
