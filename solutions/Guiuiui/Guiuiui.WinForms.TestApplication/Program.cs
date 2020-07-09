@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Guiuiui.WinForms.TestApp
+namespace Guiuiui.WinForms.TestApplication
 {
     static class Program
     {
@@ -14,7 +17,7 @@ namespace Guiuiui.WinForms.TestApp
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new MainWindow());
         }
     }
 }
