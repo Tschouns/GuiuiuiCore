@@ -21,7 +21,6 @@ namespace Guiuiui.WinForms.TestApplication.Windows
             this.personViewModel.BindProperty(p => p.IsVegetarian, (p, v) => p.IsVegetarian = v).ToControl(new CheckBoxAdapter(this.isVegetarianCheckBox));
             this.personViewModel.BindPropertyReadOnly(p => p.FullName).ToControl(new LabelAdapter<string>(this.fullNameOutputLabel));
             this.personViewModel.BindPropertyReadOnly(p => p.Age).ToControl(new LabelAdapter<int>(this.ageOutputLabel));
-            
         }
 
         private void MainWindow_Load(object sender, System.EventArgs e)
