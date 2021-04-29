@@ -65,7 +65,7 @@ namespace Guiuiui.Common.Tests
             var mockControl = new MockDataControlAdapter<string>(value => displayedValue = value);
 
             // Act
-            candidate.BindPropertyReadOnly(p => p.FirstName).ToControl(mockControl);
+            candidate.BindPropertyReadOnly(p => p.Name).ToControl(mockControl);
 
             // Assert
             Assert.Equal(default, displayedValue);
@@ -82,16 +82,16 @@ namespace Guiuiui.Common.Tests
 
             var model = new Person
             {
-                FirstName = "Foo"
+                Name = "Foo"
             };
             candidate.Model = model;
 
             // Act
-            candidate.BindPropertyReadOnly(p => p.FirstName).ToControl(mockControl);
+            candidate.BindPropertyReadOnly(p => p.Name).ToControl(mockControl);
 
             // Assert
-            Assert.Equal(model.FirstName, displayedValue);
-            Assert.Equal(model.FirstName, mockControl.Value);
+            Assert.Equal(model.Name, displayedValue);
+            Assert.Equal(model.Name, mockControl.Value);
         }
 
         [Fact]
@@ -103,16 +103,16 @@ namespace Guiuiui.Common.Tests
             var mockControl = new MockDataControlAdapter<string>(value => displayedValue = value);
             var model = new Person
             {
-                FirstName = "Foo"
+                Name = "Foo"
             };
 
             // Act
-            candidate.BindPropertyReadOnly(p => p.FirstName).ToControl(mockControl);
+            candidate.BindPropertyReadOnly(p => p.Name).ToControl(mockControl);
             candidate.Model = model;
 
             // Assert
-            Assert.Equal(model.FirstName, displayedValue);
-            Assert.Equal(model.FirstName, mockControl.Value);
+            Assert.Equal(model.Name, displayedValue);
+            Assert.Equal(model.Name, mockControl.Value);
         }
 
         [Fact]
@@ -123,21 +123,21 @@ namespace Guiuiui.Common.Tests
             var displayedValue = string.Empty;
             var mockControl = new MockDataControlAdapter<string>(value => displayedValue = value);
 
-            candidate.BindPropertyReadOnly(p => p.FirstName).ToControl(mockControl);
+            candidate.BindPropertyReadOnly(p => p.Name).ToControl(mockControl);
             
             var model = new Person
             {
-                FirstName = "Foo"
+                Name = "Foo"
             };
             candidate.Model = model;
 
             // Act
-            model.FirstName = "Bar";
+            model.Name = "Bar";
             candidate.NotifyValueHasChanged();
 
             // Assert
-            Assert.Equal(model.FirstName, displayedValue);
-            Assert.Equal(model.FirstName, mockControl.Value);
+            Assert.Equal(model.Name, displayedValue);
+            Assert.Equal(model.Name, mockControl.Value);
         }
     }
 }
