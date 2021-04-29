@@ -6,4 +6,9 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Guiuiui.Common\Guiuiui.Common.csproj" />
+    <ProjectReference Include="..\Guiuiui.WinForms\Guiuiui.WinForms.csproj" />
+  </ItemGroup>
+
 </Project>

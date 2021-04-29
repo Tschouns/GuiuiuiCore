@@ -260,6 +260,7 @@
             this.Controls.Add(this.layout);
             this.Name = "MainWindow";
             this.Text = "Person";
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.layout.ResumeLayout(false);
             this.personGroupBox.ResumeLayout(false);
             this.personLayout.ResumeLayout(false);
