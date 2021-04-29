@@ -8,7 +8,7 @@ using System;
 namespace Guiuiui.Common.ViewModelInternals
 {
     /// <summary>
-    /// Implementation of <see cref="IBindPredicate{TPropertyValue}"/>. Creates an actual read-only binding.
+    /// Implementation of <see cref="IBind{TPropertyValue}"/>. Creates an actual read-only binding when <see cref="ToControl(IDataControlAdapter{TPropertyValue})"/> is called.
     /// </summary>
     /// <typeparam name="TModel">
     /// The model type
@@ -16,7 +16,7 @@ namespace Guiuiui.Common.ViewModelInternals
     /// <typeparam name="TPropertyValue">
     /// The property value type
     /// </typeparam>
-    internal class BindReadOnlyPredicate<TModel, TPropertyValue> : IBindPredicate<TPropertyValue>
+    internal class BindReadOnlyTerm<TModel, TPropertyValue> : IBind<TPropertyValue>
         where TModel : class
     {
         // These fields are needed to create the data binding.
@@ -27,9 +27,9 @@ namespace Guiuiui.Common.ViewModelInternals
         private readonly Action<IPropertyBinding> addDataBindingCallback;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BindTwoWayPredicate{TModel,TPropertyValue}"/> class.
+        /// Initializes a new instance of the <see cref="BindTwoWayTerm{TModel,TPropertyValue}"/> class.
         /// </summary>
-        public BindReadOnlyPredicate(
+        public BindReadOnlyTerm(
             IObservable model,
             IGet<TPropertyValue> getter,
             Action<IPropertyBinding> addDataBindingCallback)
@@ -44,7 +44,7 @@ namespace Guiuiui.Common.ViewModelInternals
         }
 
         /// <summary>
-        /// See <see cref="IBindPredicate{TPropertyValue}.ToControl(IDataControlAdapter{TPropertyValue})"/>.
+        /// See <see cref="IBind{TPropertyValue}.ToControl(IDataControlAdapter{TPropertyValue})"/>.
         /// </summary>
         public void ToControl(IDataControlAdapter<TPropertyValue> controlAdapter)
         {

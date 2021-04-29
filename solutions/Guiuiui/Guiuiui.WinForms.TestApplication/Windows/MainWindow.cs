@@ -26,6 +26,12 @@ namespace Guiuiui.WinForms.TestApplication.Windows
 
         private void MainWindow_Load(object sender, System.EventArgs e)
         {
+            this.genderComboBox.Items.AddRange(new object[]
+            {
+                Gender.Male,
+                Gender.Female,
+            });
+
             this.personViewModel.Model = new Person
             {
                 FirstName = "John",

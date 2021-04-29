@@ -6,7 +6,7 @@ namespace Guiuiui.Common.DataBinding
     /// <summary>
     /// Provides an interface to bind a data control to the (previously specified) property.
     /// </summary>
-    public interface IBindPredicate<TPropertyValue>
+    public interface IBind<TPropertyValue>
     {
         /// <summary>
         /// Binds the specified data control to the property.

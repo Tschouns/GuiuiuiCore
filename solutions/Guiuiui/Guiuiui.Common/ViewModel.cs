@@ -48,29 +48,29 @@ namespace Guiuiui.Common
         /// <summary>
         /// See <see cref="IBindable{TModel}.BindPropertyReadOnly{TPropertyValue}(Func{TModel, TPropertyValue})"/>.
         /// </summary>
-        public IBindPredicate<TPropertyValue> BindPropertyReadOnly<TPropertyValue>(Func<TModel, TPropertyValue> getFunc)
+        public IBind<TPropertyValue> BindPropertyReadOnly<TPropertyValue>(Func<TModel, TPropertyValue> getFunc)
         {
             ArgumentChecks.AssertNotNull(getFunc, nameof(getFunc));
 
             var getter = new ModelGetter<TModel, ViewModel<TModel>, TPropertyValue>(this, getFunc);
-            var predicate = new BindReadOnlyPredicate<TModel, TPropertyValue>(this, getter, b => this.bindings.Add(b));
+            var bindTerm = new BindReadOnlyTerm<TModel, TPropertyValue>(this, getter, b => this.bindings.Add(b));
 
-            return predicate;
+            return bindTerm;
         }
 
         /// <summary>
         /// See <see cref="IBindable{TModel}.BindProperty{TPropertyValue}(Func{TModel, TPropertyValue}, Action{TModel, TPropertyValue})"/>.
         /// </summary>
-        public IBindPredicate<TPropertyValue> BindProperty<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TModel, TPropertyValue> setAction)
+        public IBind<TPropertyValue> BindProperty<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TModel, TPropertyValue> setAction)
         {
             ArgumentChecks.AssertNotNull(getFunc, nameof(getFunc));
             ArgumentChecks.AssertNotNull(setAction, nameof(setAction));
 
             var getter = new ModelGetter<TModel, ViewModel<TModel>, TPropertyValue>(this, getFunc);
             var setter = new ModelSetter<TModel, ViewModel<TModel>, TPropertyValue>(this, setAction);
-            var predicate = new BindTwoWayPredicate<TModel, TPropertyValue>(this, getter, setter, this.AddDataBinding);
+            var bindTerm = new BindTwoWayTerm<TModel, TPropertyValue>(this, getter, setter, this.AddDataBinding);
 
-            return predicate;
+            return bindTerm;
         }
 
         /// <summary>

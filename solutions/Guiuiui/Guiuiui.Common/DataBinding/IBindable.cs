@@ -18,7 +18,7 @@ namespace Guiuiui.Common.DataBinding
         /// <typeparam name="TPropertyValue">
         /// Type of the property value
         /// </typeparam>
-        IBindPredicate<TPropertyValue> BindPropertyReadOnly<TPropertyValue>(Func<TModel, TPropertyValue> getFunc);
+        IBind<TPropertyValue> BindPropertyReadOnly<TPropertyValue>(Func<TModel, TPropertyValue> getFunc);
 
         /// <summary>
         /// Binds the specified property two-way.
@@ -26,7 +26,7 @@ namespace Guiuiui.Common.DataBinding
         /// <typeparam name="TPropertyValue">
         /// Type of the property value
         /// </typeparam>
-        IBindPredicate<TPropertyValue> BindProperty<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TModel, TPropertyValue> setAction);
+        IBind<TPropertyValue> BindProperty<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TModel, TPropertyValue> setAction);
 
         /// <summary>
         /// Binds the specified list property.
