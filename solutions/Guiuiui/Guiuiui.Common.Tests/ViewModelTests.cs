@@ -114,5 +114,30 @@ namespace Guiuiui.Common.Tests
             Assert.Equal(model.FirstName, displayedValue);
             Assert.Equal(model.FirstName, mockControl.Value);
         }
+
+        [Fact]
+        public void NotifyValueHasChanged_AfterPropertyValueChanged_ModelPropertyIsDisplayed()
+        {
+            // Arrange
+            var candidate = new ViewModel<Person>();
+            var displayedValue = string.Empty;
+            var mockControl = new MockDataControlAdapter<string>(value => displayedValue = value);
+
+            candidate.BindPropertyReadOnly(p => p.FirstName).ToControl(mockControl);
+            
+            var model = new Person
+            {
+                FirstName = "Foo"
+            };
+            candidate.Model = model;
+
+            // Act
+            model.FirstName = "Bar";
+            candidate.NotifyValueHasChanged();
+
+            // Assert
+            Assert.Equal(model.FirstName, displayedValue);
+            Assert.Equal(model.FirstName, mockControl.Value);
+        }
     }
 }
