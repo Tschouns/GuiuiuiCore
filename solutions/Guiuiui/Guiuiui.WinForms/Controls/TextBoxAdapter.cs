@@ -63,10 +63,7 @@ namespace Guiuiui.WinForms.Controls
         /// </summary>
         public TValue Value
         {
-            get
-            {
-                return this._parser.TryParse(this._textBox.Text).Result;
-            }
+            get => this._parser.TryParse(this._textBox.Text).Result;
             set
             {
                 this._currentValue = value;

@@ -11,8 +11,7 @@ namespace Guiuiui.Common.Parser.BuiltInTypes
         /// </summary>
         public ParseResult<decimal> TryParse(string value)
         {
-            decimal result;
-            if (decimal.TryParse(value, out result))
+            if (decimal.TryParse(value, out var result))
             {
                 return ParseResult<decimal>.CreateSuccessful(result);
             }

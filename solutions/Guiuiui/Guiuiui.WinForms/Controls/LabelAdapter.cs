@@ -52,15 +52,9 @@ namespace Guiuiui.WinForms.Controls
         /// </summary>
         public TValue Value
         {
-            get
-            {
-                return default;
-            }
+            get => default;
 
-            set
-            {
-                this.label.Text = this.textConverter.GetText(value);
-            }
+            set => this.label.Text = this.textConverter.GetText(value);
         }
     }
 }

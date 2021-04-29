@@ -57,15 +57,9 @@ namespace Guiuiui.WinForms.Controls
         /// </summary>
         public TValue Value
         {
-            get
-            {
-                return this.GetSelectedValue();
-            }
+            get => this.GetSelectedValue();
 
-            set
-            {
-                this.TrySetSelectedItem(value);
-            }
+            set => this.TrySetSelectedItem(value);
         }
 
         private TValue GetSelectedValue()

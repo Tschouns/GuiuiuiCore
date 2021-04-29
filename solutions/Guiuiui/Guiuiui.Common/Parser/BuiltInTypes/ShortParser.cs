@@ -11,8 +11,7 @@ namespace Guiuiui.Common.Parser.BuiltInTypes
         /// </summary>
         public ParseResult<short> TryParse(string value)
         {
-            short result;
-            if (short.TryParse(value, out result))
+            if (short.TryParse(value, out var result))
             {
                 return ParseResult<short>.CreateSuccessful(result);
             }

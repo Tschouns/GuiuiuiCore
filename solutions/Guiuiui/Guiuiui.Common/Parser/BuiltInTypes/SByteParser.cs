@@ -11,8 +11,7 @@ namespace Guiuiui.Common.Parser.BuiltInTypes
         /// </summary>
         public ParseResult<sbyte> TryParse(string value)
         {
-            sbyte result;
-            if (sbyte.TryParse(value, out result))
+            if (sbyte.TryParse(value, out var result))
             {
                 return ParseResult<sbyte>.CreateSuccessful(result);
             }

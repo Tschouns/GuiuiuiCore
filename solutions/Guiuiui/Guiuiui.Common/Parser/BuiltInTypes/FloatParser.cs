@@ -11,8 +11,7 @@ namespace Guiuiui.Common.Parser.BuiltInTypes
         /// </summary>
         public ParseResult<float> TryParse(string value)
         {
-            float result;
-            if (float.TryParse(value, out result))
+            if (float.TryParse(value, out var result))
             {
                 return ParseResult<float>.CreateSuccessful(result);
             }

@@ -33,15 +33,9 @@ namespace Guiuiui.WinForms.Controls
         /// </summary>
         public bool Value
         {
-            get
-            {
-                return this.checkBox.Checked;
-            }
+            get => this.checkBox.Checked;
 
-            set
-            {
-                this.checkBox.Checked = value;
-            }
+            set => this.checkBox.Checked = value;
         }
 
         private void CheckBox_CheckedChanged(object sender, EventArgs e)

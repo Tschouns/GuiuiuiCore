@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Guiuiui.WinForms.TestApplication.Model
+﻿namespace Guiuiui.WinForms.TestApplication.Model
 {
     public enum Gender
     {

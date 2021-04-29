@@ -11,8 +11,7 @@ namespace Guiuiui.Common.Parser.BuiltInTypes
         /// </summary>
         public ParseResult<ulong> TryParse(string value)
         {
-            ulong result;
-            if (ulong.TryParse(value, out result))
+            if (ulong.TryParse(value, out var result))
             {
                 return ParseResult<ulong>.CreateSuccessful(result);
             }

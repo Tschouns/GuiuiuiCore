@@ -33,10 +33,7 @@ namespace Guiuiui.WinForms.Controls
         /// </summary>
         public DateTime Value
         {
-            get
-            {
-                return this.dateTimePicker.Value;
-            }
+            get => this.dateTimePicker.Value;
 
             set
             {

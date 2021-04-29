@@ -2,7 +2,6 @@
 using Guiuiui.Common.TestTypes.Reflection;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace Guiuiui.Common.Tests.Reflection

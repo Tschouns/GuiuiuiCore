@@ -79,7 +79,7 @@ namespace Guiuiui.Common.Tests
             var candidate = new ViewModel<Person>();
             var displayedValue = "rubbish";
             var mockControl = new MockDataControlAdapter<string>(value => displayedValue = value);
-            
+
             var model = new Person
             {
                 FirstName = "Foo"

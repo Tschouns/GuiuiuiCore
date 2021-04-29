@@ -31,8 +31,7 @@ namespace Guiuiui.Common.TextConverter
             var typePriorities = this.typeHelper.GetInheritedTypes<TValue>();
             foreach (var type in typePriorities)
             {
-                object textConverter;
-                if (this.textConverterDictionary.TryGetValue(type, out textConverter))
+                if (this.textConverterDictionary.TryGetValue(type, out var textConverter))
                 {
                     return (ITextConverter<TValue>)textConverter;
                 }

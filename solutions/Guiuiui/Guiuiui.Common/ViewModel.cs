@@ -32,7 +32,7 @@ namespace Guiuiui.Common
         /// </summary>
         public TModel Model
         {
-            get { return this.model; }
+            get => this.model;
             set
             {
                 if (object.Equals(this.model, value))
