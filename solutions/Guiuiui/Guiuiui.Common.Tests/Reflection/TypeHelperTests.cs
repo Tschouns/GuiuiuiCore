@@ -33,5 +33,33 @@ namespace Guiuiui.Common.Tests.Reflection
                 Assert.Equal(expectedInheritedTypes[i], inheritedTypes[i]);
             }
         }
+
+        [Fact]
+        public void GetInheritedTypes_Nightingale_ReturnsAllInheritedTypesInExpectedOrder()
+        {
+            // Arrange
+            var candidate = new TypeHelper();
+            var type = typeof(Nightingale);
+            var expectedInheritedTypes = new List<Type>
+            {
+                typeof(Nightingale),
+                typeof(SingBird),
+                typeof(Bird),
+                typeof(IWalk),
+                typeof(IFly),
+                typeof(ISing),
+                typeof(object),
+            };
+
+            // Act
+            var inheritedTypes = candidate.GetInheritedTypes(type);
+
+            // Assert
+            Assert.Equal(expectedInheritedTypes.Count, inheritedTypes.Count);
+            for (var i = 0; i < expectedInheritedTypes.Count; i++)
+            {
+                Assert.Equal(expectedInheritedTypes[i], inheritedTypes[i]);
+            }
+        }
     }
 }

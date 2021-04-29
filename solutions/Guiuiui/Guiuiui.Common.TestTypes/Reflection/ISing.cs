@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Guiuiui.Common.TestTypes.Reflection
 {
-    interface ISing
+    public interface ISing
     {
     }
 }
