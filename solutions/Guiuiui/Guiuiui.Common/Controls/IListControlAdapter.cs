@@ -20,7 +20,7 @@ namespace Guiuiui.Common.Controls
         /// <summary>
         /// Gets the selected items.
         /// </summary>
-        IEnumerable<TListItem> SelectedItems { get; }
+        IReadOnlyList<TListItem> SelectedItems { get; }
 
         /// <summary>
         /// Selects the specified items, if they are in the list.
@@ -30,6 +30,6 @@ namespace Guiuiui.Common.Controls
         /// <summary>
         /// Sets the items which are to be displayed in the list.
         /// </summary>
-        void SetListItemsToDisplay(IEnumerable<TListItem> items);
+        void SetListItemsToDisplay(IReadOnlyList<TListItem> items);
     }
 }
