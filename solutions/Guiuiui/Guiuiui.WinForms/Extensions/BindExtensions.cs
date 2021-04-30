@@ -1,4 +1,5 @@
-﻿using Guiuiui.Common.DataBinding;
+﻿using Guiuiui.Common;
+using Guiuiui.Common.DataBinding;
 using Guiuiui.Common.RuntimeChecks;
 using Guiuiui.WinForms.Controls;
 using System.Windows.Forms;
@@ -43,8 +44,9 @@ namespace Guiuiui.WinForms.Extensions
         {
             ArgumentChecks.AssertNotNull(bind, nameof(bind));
             ArgumentChecks.AssertNotNull(comboBox, nameof(comboBox));
-
-            bind.ToControl(new ComboBoxAdapter<TPropertyType>(comboBox));
+            
+            var textConverter = ToolBox.TextConverters.GetTextConverter<TPropertyType>();
+            bind.ToControl(new ComboBoxAdapter<TPropertyType>(comboBox, textConverter));
         }
     }
 }

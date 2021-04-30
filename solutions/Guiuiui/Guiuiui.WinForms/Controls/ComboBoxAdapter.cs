@@ -22,16 +22,6 @@ namespace Guiuiui.WinForms.Controls
         /// <summary>
         /// Initializes a new instance of the <see cref="ComboBoxAdapter{TValue}"/> class.
         /// </summary>
-        public ComboBoxAdapter(ComboBox comboBox)
-            : this(
-                  comboBox,
-                  ToolBox.TextConverters.GetTextConverter<TValue>())
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ComboBoxAdapter{TValue}"/> class.
-        /// </summary>
         public ComboBoxAdapter(
             ComboBox comboBox,
             ITextConverter<TValue> textConverter)
