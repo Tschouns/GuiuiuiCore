@@ -6,6 +6,9 @@ using Xunit;
 
 namespace Guiuiui.Common.Tests.Reflection
 {
+    /// <summary>
+    /// Performs tests for the <see cref="TypeHelper"/> class.
+    /// </summary>
     public class TypeHelperTests
     {
         [Fact]

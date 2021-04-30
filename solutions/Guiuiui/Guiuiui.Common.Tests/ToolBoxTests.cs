@@ -3,6 +3,9 @@ using Xunit;
 
 namespace Guiuiui.Common.Tests
 {
+    /// <summary>
+    /// Performs tests for the <see cref="ToolBox"/> class.
+    /// </summary>
     public class ToolBoxTests
     {
         [Fact]

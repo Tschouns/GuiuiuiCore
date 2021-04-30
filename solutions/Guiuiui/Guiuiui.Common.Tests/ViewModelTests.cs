@@ -5,6 +5,9 @@ using Xunit;
 
 namespace Guiuiui.Common.Tests
 {
+    /// <summary>
+    /// Performs tests for the <see cref="ViewModel{TModel}"/> class.
+    /// </summary>
     public class ViewModelTests
     {
         [Fact]
