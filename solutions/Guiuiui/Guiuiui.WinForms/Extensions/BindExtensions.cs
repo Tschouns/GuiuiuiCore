@@ -26,5 +26,25 @@ namespace Guiuiui.WinForms.Extensions
 
             bind.ToControl(new CheckBoxAdapter(checkBox));
         }
+
+        /// <summary>
+        /// Binds the specified combo box to the property.
+        /// </summary>
+        /// <typeparam name="TPropertyType">
+        /// The property type
+        /// </typeparam>
+        /// <param name="bind">
+        /// The bind term object
+        /// </param>
+        /// <param name="checkBox">
+        /// The combo box to bind to the property
+        /// </param>
+        public static void ToComboBox<TPropertyType>(this IBind<TPropertyType> bind, ComboBox comboBox)
+        {
+            ArgumentChecks.AssertNotNull(bind, nameof(bind));
+            ArgumentChecks.AssertNotNull(comboBox, nameof(comboBox));
+
+            bind.ToControl(new ComboBoxAdapter<TPropertyType>(comboBox));
+        }
     }
 }
