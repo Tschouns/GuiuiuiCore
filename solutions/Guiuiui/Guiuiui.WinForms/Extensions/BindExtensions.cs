@@ -2,6 +2,7 @@
 using Guiuiui.Common.DataBinding;
 using Guiuiui.Common.RuntimeChecks;
 using Guiuiui.WinForms.Controls;
+using System;
 using System.Windows.Forms;
 
 namespace Guiuiui.WinForms.Extensions
@@ -47,6 +48,23 @@ namespace Guiuiui.WinForms.Extensions
             
             var textConverter = ToolBox.TextConverters.GetTextConverter<TPropertyType>();
             bind.ToControl(new ComboBoxAdapter<TPropertyType>(comboBox, textConverter));
+        }
+
+        /// <summary>
+        /// Binds the specified date time picker to the property.
+        /// </summary>
+        /// <param name="bind">
+        /// The bind term object
+        /// </param>
+        /// <param name="dateTimePicker">
+        /// The date time picker to bind to the property
+        /// </param>
+        public static void ToDateTimePicker(this IBind<DateTime> bind, DateTimePicker dateTimePicker)
+        {
+            ArgumentChecks.AssertNotNull(bind, nameof(bind));
+            ArgumentChecks.AssertNotNull(dateTimePicker, nameof(dateTimePicker));
+
+            bind.ToControl(new DateTimePickerAdapter(dateTimePicker));
         }
     }
 }

@@ -3,7 +3,7 @@
 namespace Guiuiui.Common.Controls
 {
     /// <summary>
-    /// Provides an abstract interface to interact with any control.
+    /// Provides an abstract interface to interact with any control. TODO: inherit IDisposable -- to clean up event handlers...
     /// </summary>
     /// <typeparam name="TValue">
     /// Type of the value represented by the control
