@@ -9,8 +9,7 @@ namespace Guiuiui.Common.Controls
     /// <typeparam name="TListItem">
     /// Type of the list item
     /// </typeparam>
-    public interface IListControlAdapter<TListItem>
-        where TListItem : class
+    public interface IListControlAdapter<TListItem> : IDisposable
     {
         /// <summary>
         /// Raised when the selected items have changed.
@@ -23,13 +22,13 @@ namespace Guiuiui.Common.Controls
         IReadOnlyList<TListItem> SelectedItems { get; }
 
         /// <summary>
-        /// Selects the specified items, if they are in the list.
-        /// </summary>
-        void SelectListItems(IEnumerable<TListItem> items);
-
-        /// <summary>
         /// Sets the items which are to be displayed in the list.
         /// </summary>
         void SetListItemsToDisplay(IReadOnlyList<TListItem> items);
+
+        /// <summary>
+        /// Selects the specified items, if they are in the list.
+        /// </summary>
+        void SelectListItems(IEnumerable<TListItem> items);
     }
 }
