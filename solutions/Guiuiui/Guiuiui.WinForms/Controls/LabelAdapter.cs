@@ -43,8 +43,12 @@ namespace Guiuiui.WinForms.Controls
         public TValue Value
         {
             get => default;
-
             set => this.label.Text = this.textConverter.GetText(value);
+        }
+
+        public void Dispose()
+        {
+            // Nothing to do.
         }
     }
 }

@@ -39,5 +39,10 @@ namespace Guiuiui.Common.TestTypes.Controls
         }
 
         public event EventHandler ControlValueChanged;
+
+        public void Dispose()
+        {
+            // Nothing to do.
+        }
     }
 }

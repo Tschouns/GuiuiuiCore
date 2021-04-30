@@ -67,9 +67,13 @@ namespace Guiuiui.WinForms.Controls
             set
             {
                 this._currentValue = value;
-
                 this._textBox.Text = this._textConverter.GetText(this._currentValue);
             }
+        }
+
+        public void Dispose()
+        {
+            this._textBox.TextChanged -= this.TextBox_TextChanged;
         }
 
         private void TextBox_TextChanged(object sender, EventArgs e)

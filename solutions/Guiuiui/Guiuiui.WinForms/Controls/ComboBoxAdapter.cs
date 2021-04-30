@@ -48,8 +48,14 @@ namespace Guiuiui.WinForms.Controls
         public TValue Value
         {
             get => this.GetSelectedValue();
-
             set => this.TrySetSelectedItem(value);
+        }
+
+        public void Dispose()
+        {
+            this.comboBox.Format -= this.ComboBox_Format;
+            this.comboBox.SelectedValueChanged -= this.ComboBox_SelectedValueChanged;
+            this.comboBox.TextChanged -= this.ComboBox_TextChanged;
         }
 
         private TValue GetSelectedValue()

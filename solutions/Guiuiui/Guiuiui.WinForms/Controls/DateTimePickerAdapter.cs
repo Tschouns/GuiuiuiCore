@@ -53,6 +53,11 @@ namespace Guiuiui.WinForms.Controls
             }
         }
 
+        public void Dispose()
+        {
+            this.dateTimePicker.ValueChanged -= this.DateTimePicker_ValueChanged;
+        }
+
         private void DateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             this.ControlValueChanged?.Invoke(this, new EventArgs());

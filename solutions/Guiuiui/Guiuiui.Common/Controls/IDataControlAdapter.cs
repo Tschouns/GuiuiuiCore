@@ -8,7 +8,7 @@ namespace Guiuiui.Common.Controls
     /// <typeparam name="TValue">
     /// Type of the value represented by the control
     /// </typeparam>
-    public interface IDataControlAdapter<TValue>
+    public interface IDataControlAdapter<TValue> : IDisposable
     {
         /// <summary>
         /// Raised whenever the value of the underlying control has changed.
