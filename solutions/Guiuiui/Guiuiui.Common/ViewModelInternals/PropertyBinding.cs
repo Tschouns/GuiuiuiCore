@@ -15,7 +15,7 @@ namespace Guiuiui.Common.ViewModelInternals
         private readonly ISet<TPropertyValue> setter;
         private readonly IDataControlAdapter<TPropertyValue> control;
 
-        private bool isBound = false;
+        private bool isDisposed = false;
 
         /// <summary>
         /// Used to prevent a stack overflow in case of back coupling due to ill-defined bindings.
@@ -44,25 +44,23 @@ namespace Guiuiui.Common.ViewModelInternals
             this.model.ValueChanged += this.Model_ValueChanged;
             this.control.ControlValueChanged += this.ControlAdapter_ControlValueChanged;
 
-            this.isBound = true;
-
             this.InitializeControl();
         }
 
-        /// <summary>
-        /// See <see cref="IPropertyBinding.Unbind"/>.
-        /// </summary>
-        public void Unbind()
+        public void Dispose()
         {
-            if (this.isBound)
+            if (this.isDisposed)
             {
-                // Stop observing. This will cause this instance to no longer be referenced via the
-                // event handlers, and will eventually allow it to be garbage collected.
-                this.model.ValueChanged -= this.Model_ValueChanged;
-                this.control.ControlValueChanged -= this.ControlAdapter_ControlValueChanged;
-
-                this.isBound = false;
+                return;
             }
+
+            // Stop observing. This will cause this instance to no longer be referenced via the
+            // event handlers, and will eventually allow it to be garbage collected.
+            this.model.ValueChanged -= this.Model_ValueChanged;
+            this.control.ControlValueChanged -= this.ControlAdapter_ControlValueChanged;
+            this.control.Dispose();
+
+            this.isDisposed = true;
         }
 
         private void InitializeControl()

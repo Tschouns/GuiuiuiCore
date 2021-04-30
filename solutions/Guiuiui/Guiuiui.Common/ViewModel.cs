@@ -89,7 +89,7 @@ namespace Guiuiui.Common
         {
             foreach (var dataBinding in this.bindings)
             {
-                dataBinding.Unbind();
+                dataBinding.Dispose();
             }
 
             this.bindings.Clear();
