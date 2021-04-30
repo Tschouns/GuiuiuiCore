@@ -1,5 +1,4 @@
 ﻿using Guiuiui.Common;
-using Guiuiui.WinForms.Controls;
 using Guiuiui.WinForms.Extensions;
 using Guiuiui.WinForms.TestApplication.Model;
 using System;
@@ -15,8 +14,8 @@ namespace Guiuiui.WinForms.TestApplication.Windows
         {
             this.InitializeComponent();
 
-            this.personViewModel.BindProperty(p => p.LastName, (p, v) => p.LastName = v).ToControl(new TextBoxAdapter<string>(this.lastNameTextBox));
-            this.personViewModel.BindProperty(p => p.FirstName, (p, v) => p.FirstName = v).ToControl(new TextBoxAdapter<string>(this.firstNameTextBox));
+            this.personViewModel.BindProperty(p => p.LastName, (p, v) => p.LastName = v).ToTextBox(this.lastNameTextBox);
+            this.personViewModel.BindProperty(p => p.FirstName, (p, v) => p.FirstName = v).ToTextBox(this.firstNameTextBox);
             this.personViewModel.BindProperty(p => p.Gender, (p, v) => p.Gender = v).ToComboBox(this.genderComboBox);
             this.personViewModel.BindProperty(p => p.DateOfBirth, (p, v) => p.DateOfBirth = v).ToDateTimePicker(this.dateOfBirthPicker);
             this.personViewModel.BindProperty(p => p.IsVegetarian, (p, v) => p.IsVegetarian = v).ToCheckBox(this.isVegetarianCheckBox);

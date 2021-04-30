@@ -47,6 +47,7 @@ namespace Guiuiui.WinForms.Extensions
             ArgumentChecks.AssertNotNull(comboBox, nameof(comboBox));
             
             var textConverter = ToolBox.TextConverters.GetTextConverter<TPropertyType>();
+
             bind.ToControl(new ComboBoxAdapter<TPropertyType>(comboBox, textConverter));
         }
 
@@ -85,7 +86,31 @@ namespace Guiuiui.WinForms.Extensions
             ArgumentChecks.AssertNotNull(label, nameof(label));
 
             var textConverter = ToolBox.TextConverters.GetTextConverter<TPropertyType>();
+
             bind.ToControl(new LabelAdapter<TPropertyType>(label, textConverter));
+        }
+
+        /// <summary>
+        /// Binds the specified text box to the property.
+        /// </summary>
+        /// <typeparam name="TPropertyType">
+        /// The property type
+        /// </typeparam>
+        /// <param name="bind">
+        /// The bind term object
+        /// </param>
+        /// <param name="checkBox">
+        /// The text box to bind to the property
+        /// </param>
+        public static void ToTextBox<TPropertyType>(this IBind<TPropertyType> bind, TextBox textBox)
+        {
+            ArgumentChecks.AssertNotNull(bind, nameof(bind));
+            ArgumentChecks.AssertNotNull(textBox, nameof(textBox));
+
+            var textConverter = ToolBox.TextConverters.GetTextConverter<TPropertyType>();
+            var parser = ToolBox.Parsers.GetParser<TPropertyType>();
+
+            bind.ToControl(new TextBoxAdapter<TPropertyType>(textBox, textConverter, parser));
         }
     }
 }
