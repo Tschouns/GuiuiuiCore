@@ -139,5 +139,52 @@ namespace Guiuiui.Common.Tests
             Assert.Equal(model.Name, displayedValue);
             Assert.Equal(model.Name, mockControl.Value);
         }
+
+        [Fact]
+        public void UnbindAll_AfterPropertyBound_ChangesAreNoLongerAppliedToControl()
+        {
+            // Arrange
+            var candidate = new ViewModel<Person>();
+            var displayedValue = string.Empty;
+            var mockControl = new MockDataControlAdapter<string>(value => displayedValue = value);
+
+            candidate.BindPropertyReadOnly(p => p.Name).ToControl(mockControl);
+
+            var model = new Person
+            {
+                Name = "Foo"
+            };
+            candidate.Model = model;
+
+            // Act
+            candidate.UnbindAll();
+
+            // Assert
+            model.Name = "Bar";
+            candidate.NotifyValueHasChanged();
+
+            Assert.NotEqual(model.Name, displayedValue);
+            Assert.NotEqual(model.Name, mockControl.Value);
+        }
+
+
+        [Fact]
+        public void UnbindAll_TwiceAfterPropertyBound_DoesNotThrow()
+        {
+            // Arrange
+            var candidate = new ViewModel<Person>();
+            var mockControl = new MockDataControlAdapter<string>(value => { });
+
+            candidate.BindPropertyReadOnly(p => p.Name).ToControl(mockControl);
+
+            candidate.Model = new Person
+            {
+                Name = "Foo"
+            };
+
+            // Act / Assert
+            candidate.UnbindAll();
+            candidate.UnbindAll();
+        }
     }
 }
