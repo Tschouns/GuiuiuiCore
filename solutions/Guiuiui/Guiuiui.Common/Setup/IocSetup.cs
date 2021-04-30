@@ -44,6 +44,7 @@ namespace Guiuiui.Common.Setup
             container.RegisterSingleton<IParser<ushort>, UShortParser>();
 
             container.RegisterSingleton<IParser<DateTime>, DateTimeParser>();
+            container.RegisterSingleton<IParser<Guid>, GuidParser>();
 
             // Parser provider instance
             var parserProvider = new ParserProvider(container);
