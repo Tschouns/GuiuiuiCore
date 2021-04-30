@@ -66,5 +66,26 @@ namespace Guiuiui.WinForms.Extensions
 
             bind.ToControl(new DateTimePickerAdapter(dateTimePicker));
         }
+
+        /// <summary>
+        /// Binds the specified label to the property.
+        /// </summary>
+        /// <typeparam name="TPropertyType">
+        /// The property type
+        /// </typeparam>
+        /// <param name="bind">
+        /// The bind term object
+        /// </param>
+        /// <param name="checkBox">
+        /// The label to bind to the property
+        /// </param>
+        public static void ToLabel<TPropertyType>(this IBind<TPropertyType> bind, Label label)
+        {
+            ArgumentChecks.AssertNotNull(bind, nameof(bind));
+            ArgumentChecks.AssertNotNull(label, nameof(label));
+
+            var textConverter = ToolBox.TextConverters.GetTextConverter<TPropertyType>();
+            bind.ToControl(new LabelAdapter<TPropertyType>(label, textConverter));
+        }
     }
 }

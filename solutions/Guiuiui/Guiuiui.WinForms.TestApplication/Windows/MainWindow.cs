@@ -20,8 +20,8 @@ namespace Guiuiui.WinForms.TestApplication.Windows
             this.personViewModel.BindProperty(p => p.Gender, (p, v) => p.Gender = v).ToComboBox(this.genderComboBox);
             this.personViewModel.BindProperty(p => p.DateOfBirth, (p, v) => p.DateOfBirth = v).ToDateTimePicker(this.dateOfBirthPicker);
             this.personViewModel.BindProperty(p => p.IsVegetarian, (p, v) => p.IsVegetarian = v).ToCheckBox(this.isVegetarianCheckBox);
-            this.personViewModel.BindPropertyReadOnly(p => p.FullName).ToControl(new LabelAdapter<string>(this.fullNameOutputLabel));
-            this.personViewModel.BindPropertyReadOnly(p => p.Age).ToControl(new LabelAdapter<int>(this.ageOutputLabel));
+            this.personViewModel.BindPropertyReadOnly(p => p.FullName).ToLabel(this.fullNameOutputLabel);
+            this.personViewModel.BindPropertyReadOnly(p => p.Age).ToLabel(this.ageOutputLabel);
         }
 
         private void MainWindow_Load(object sender, System.EventArgs e)
