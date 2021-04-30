@@ -2,9 +2,11 @@
 using Guiuiui.Common.DependencyInjection;
 using Guiuiui.Common.Parser;
 using Guiuiui.Common.Parser.BuiltInTypes;
+using Guiuiui.Common.Parser.SystemTypes;
 using Guiuiui.Common.Reflection;
 using Guiuiui.Common.RuntimeChecks;
 using Guiuiui.Common.TextConverter;
+using System;
 
 namespace Guiuiui.Common.Setup
 {
@@ -40,6 +42,8 @@ namespace Guiuiui.Common.Setup
             container.RegisterSingleton<IParser<uint>, UIntParser>();
             container.RegisterSingleton<IParser<ulong>, ULongParser>();
             container.RegisterSingleton<IParser<ushort>, UShortParser>();
+
+            container.RegisterSingleton<IParser<DateTime>, DateTimeParser>();
 
             // Parser provider instance
             var parserProvider = new ParserProvider(container);
