@@ -48,12 +48,12 @@ namespace Guiuiui.Common
         /// <summary>
         /// See <see cref="IBindable{TModel}.BindPropertyReadOnly{TPropertyValue}(Func{TModel, TPropertyValue})"/>.
         /// </summary>
-        public IBind<TPropertyValue> BindPropertyReadOnly<TPropertyValue>(Func<TModel, TPropertyValue> getFunc)
+        public IBindProperty<TPropertyValue> BindPropertyReadOnly<TPropertyValue>(Func<TModel, TPropertyValue> getFunc)
         {
             ArgumentChecks.AssertNotNull(getFunc, nameof(getFunc));
 
             var getter = new ModelGetter<TModel, ViewModel<TModel>, TPropertyValue>(this, getFunc);
-            var bindTerm = new BindReadOnlyTerm<TModel, TPropertyValue>(this, getter, b => this.bindings.Add(b));
+            var bindTerm = new BindPropertyReadOnlyTerm<TModel, TPropertyValue>(this, getter, b => this.bindings.Add(b));
 
             return bindTerm;
         }
@@ -61,14 +61,14 @@ namespace Guiuiui.Common
         /// <summary>
         /// See <see cref="IBindable{TModel}.BindProperty{TPropertyValue}(Func{TModel, TPropertyValue}, Action{TModel, TPropertyValue})"/>.
         /// </summary>
-        public IBind<TPropertyValue> BindProperty<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TModel, TPropertyValue> setAction)
+        public IBindProperty<TPropertyValue> BindProperty<TPropertyValue>(Func<TModel, TPropertyValue> getFunc, Action<TModel, TPropertyValue> setAction)
         {
             ArgumentChecks.AssertNotNull(getFunc, nameof(getFunc));
             ArgumentChecks.AssertNotNull(setAction, nameof(setAction));
 
             var getter = new ModelGetter<TModel, ViewModel<TModel>, TPropertyValue>(this, getFunc);
             var setter = new ModelSetter<TModel, ViewModel<TModel>, TPropertyValue>(this, setAction);
-            var bindTerm = new BindTwoWayTerm<TModel, TPropertyValue>(this, getter, setter, this.AddDataBinding);
+            var bindTerm = new BindPropertyTwoWayTerm<TModel, TPropertyValue>(this, getter, setter, this.AddDataBinding);
 
             return bindTerm;
         }

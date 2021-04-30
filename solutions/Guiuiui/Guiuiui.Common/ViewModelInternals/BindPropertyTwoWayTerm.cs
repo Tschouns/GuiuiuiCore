@@ -7,7 +7,7 @@ using System;
 namespace Guiuiui.Common.ViewModelInternals
 {
     /// <summary>
-    /// Implementation of <see cref="IBind{TPropertyValue}"/>. Creates an actual two-way binding when <see cref="ToControl(IDataControlAdapter{TPropertyValue})"/> is called.
+    /// Implementation of <see cref="IBindProperty{TPropertyValue}"/>. Creates an actual two-way binding when <see cref="ToControl(IDataControlAdapter{TPropertyValue})"/> is called.
     /// </summary>
     /// <typeparam name="TModel">
     /// The model type
@@ -15,7 +15,7 @@ namespace Guiuiui.Common.ViewModelInternals
     /// <typeparam name="TPropertyValue">
     /// The property value type
     /// </typeparam>
-    internal class BindTwoWayTerm<TModel, TPropertyValue> : IBind<TPropertyValue>
+    internal class BindPropertyTwoWayTerm<TModel, TPropertyValue> : IBindProperty<TPropertyValue>
         where TModel : class
     {
         // These fields are needed to create the data binding.
@@ -27,9 +27,9 @@ namespace Guiuiui.Common.ViewModelInternals
         private readonly Action<IPropertyBinding> addDataBindingCallback;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BindTwoWayTerm{TModel,TPropertyValue}"/> class.
+        /// Initializes a new instance of the <see cref="BindPropertyTwoWayTerm{TModel,TPropertyValue}"/> class.
         /// </summary>
-        public BindTwoWayTerm(
+        public BindPropertyTwoWayTerm(
             IObservable model,
             IGet<TPropertyValue> getter,
             ISet<TPropertyValue> setter,
@@ -47,7 +47,7 @@ namespace Guiuiui.Common.ViewModelInternals
         }
 
         /// <summary>
-        /// See <see cref="IBind{TPropertyValue}.ToControl(IDataControlAdapter{TPropertyValue})"/>.
+        /// See <see cref="IBindProperty{TPropertyValue}.ToControl(IDataControlAdapter{TPropertyValue})"/>.
         /// </summary>
         public void ToControl(IDataControlAdapter<TPropertyValue> controlAdapter)
         {

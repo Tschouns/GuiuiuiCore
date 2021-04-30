@@ -21,7 +21,7 @@ namespace Guiuiui.WinForms.Extensions
         /// <param name="checkBox">
         /// The check box to bind to the property
         /// </param>
-        public static void ToCheckBox(this IBind<bool> bind, CheckBox checkBox)
+        public static void ToCheckBox(this IBindProperty<bool> bind, CheckBox checkBox)
         {
             ArgumentChecks.AssertNotNull(bind, nameof(bind));
             ArgumentChecks.AssertNotNull(checkBox, nameof(checkBox));
@@ -41,7 +41,7 @@ namespace Guiuiui.WinForms.Extensions
         /// <param name="checkBox">
         /// The combo box to bind to the property
         /// </param>
-        public static void ToComboBox<TPropertyType>(this IBind<TPropertyType> bind, ComboBox comboBox)
+        public static void ToComboBox<TPropertyType>(this IBindProperty<TPropertyType> bind, ComboBox comboBox)
         {
             ArgumentChecks.AssertNotNull(bind, nameof(bind));
             ArgumentChecks.AssertNotNull(comboBox, nameof(comboBox));
@@ -60,7 +60,7 @@ namespace Guiuiui.WinForms.Extensions
         /// <param name="dateTimePicker">
         /// The date time picker to bind to the property
         /// </param>
-        public static void ToDateTimePicker(this IBind<DateTime> bind, DateTimePicker dateTimePicker)
+        public static void ToDateTimePicker(this IBindProperty<DateTime> bind, DateTimePicker dateTimePicker)
         {
             ArgumentChecks.AssertNotNull(bind, nameof(bind));
             ArgumentChecks.AssertNotNull(dateTimePicker, nameof(dateTimePicker));
@@ -80,7 +80,7 @@ namespace Guiuiui.WinForms.Extensions
         /// <param name="checkBox">
         /// The label to bind to the property
         /// </param>
-        public static void ToLabel<TPropertyType>(this IBind<TPropertyType> bind, Label label)
+        public static void ToLabel<TPropertyType>(this IBindProperty<TPropertyType> bind, Label label)
         {
             ArgumentChecks.AssertNotNull(bind, nameof(bind));
             ArgumentChecks.AssertNotNull(label, nameof(label));
@@ -102,7 +102,7 @@ namespace Guiuiui.WinForms.Extensions
         /// <param name="checkBox">
         /// The text box to bind to the property
         /// </param>
-        public static void ToTextBox<TPropertyType>(this IBind<TPropertyType> bind, TextBox textBox)
+        public static void ToTextBox<TPropertyType>(this IBindProperty<TPropertyType> bind, TextBox textBox)
         {
             ArgumentChecks.AssertNotNull(bind, nameof(bind));
             ArgumentChecks.AssertNotNull(textBox, nameof(textBox));
