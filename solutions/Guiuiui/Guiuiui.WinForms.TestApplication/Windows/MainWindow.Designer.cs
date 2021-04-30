@@ -45,6 +45,8 @@
             this.isVegetarianCheckBox = new System.Windows.Forms.CheckBox();
             this.fullNameOutputLabel = new System.Windows.Forms.Label();
             this.ageOutputLabel = new System.Windows.Forms.Label();
+            this.dateOfBirthLabel2 = new System.Windows.Forms.Label();
+            this.dateOfBirthTextBox = new System.Windows.Forms.TextBox();
             this.layout.SuspendLayout();
             this.personGroupBox.SuspendLayout();
             this.personLayout.SuspendLayout();
@@ -91,21 +93,24 @@
             this.personLayout.Controls.Add(this.lastNameLabel, 1, 2);
             this.personLayout.Controls.Add(this.genderLabel, 1, 3);
             this.personLayout.Controls.Add(this.dateOfBirthLabel, 1, 4);
-            this.personLayout.Controls.Add(this.isVegetarianLabel, 1, 5);
-            this.personLayout.Controls.Add(this.fullNameLabel, 1, 6);
-            this.personLayout.Controls.Add(this.ageLabel, 1, 7);
+            this.personLayout.Controls.Add(this.isVegetarianLabel, 1, 6);
+            this.personLayout.Controls.Add(this.fullNameLabel, 1, 7);
+            this.personLayout.Controls.Add(this.ageLabel, 1, 8);
             this.personLayout.Controls.Add(this.firstNameTextBox, 2, 1);
             this.personLayout.Controls.Add(this.lastNameTextBox, 2, 2);
             this.personLayout.Controls.Add(this.dateOfBirthPicker, 2, 4);
             this.personLayout.Controls.Add(this.genderComboBox, 2, 3);
-            this.personLayout.Controls.Add(this.isVegetarianCheckBox, 2, 5);
-            this.personLayout.Controls.Add(this.fullNameOutputLabel, 2, 6);
-            this.personLayout.Controls.Add(this.ageOutputLabel, 2, 7);
+            this.personLayout.Controls.Add(this.isVegetarianCheckBox, 2, 6);
+            this.personLayout.Controls.Add(this.fullNameOutputLabel, 2, 7);
+            this.personLayout.Controls.Add(this.ageOutputLabel, 2, 8);
+            this.personLayout.Controls.Add(this.dateOfBirthLabel2, 1, 5);
+            this.personLayout.Controls.Add(this.dateOfBirthTextBox, 2, 5);
             this.personLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.personLayout.Location = new System.Drawing.Point(3, 19);
             this.personLayout.Name = "personLayout";
-            this.personLayout.RowCount = 11;
+            this.personLayout.RowCount = 12;
             this.personLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.personLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.personLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.personLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.personLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -163,7 +168,7 @@
             // 
             this.isVegetarianLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.isVegetarianLabel.AutoSize = true;
-            this.isVegetarianLabel.Location = new System.Drawing.Point(23, 147);
+            this.isVegetarianLabel.Location = new System.Drawing.Point(23, 177);
             this.isVegetarianLabel.Name = "isVegetarianLabel";
             this.isVegetarianLabel.Size = new System.Drawing.Size(348, 15);
             this.isVegetarianLabel.TabIndex = 4;
@@ -173,7 +178,7 @@
             // 
             this.fullNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.fullNameLabel.AutoSize = true;
-            this.fullNameLabel.Location = new System.Drawing.Point(23, 177);
+            this.fullNameLabel.Location = new System.Drawing.Point(23, 207);
             this.fullNameLabel.Name = "fullNameLabel";
             this.fullNameLabel.Size = new System.Drawing.Size(348, 15);
             this.fullNameLabel.TabIndex = 5;
@@ -183,7 +188,7 @@
             // 
             this.ageLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ageLabel.AutoSize = true;
-            this.ageLabel.Location = new System.Drawing.Point(23, 207);
+            this.ageLabel.Location = new System.Drawing.Point(23, 237);
             this.ageLabel.Name = "ageLabel";
             this.ageLabel.Size = new System.Drawing.Size(348, 15);
             this.ageLabel.TabIndex = 6;
@@ -226,7 +231,7 @@
             // 
             this.isVegetarianCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.isVegetarianCheckBox.AutoSize = true;
-            this.isVegetarianCheckBox.Location = new System.Drawing.Point(377, 148);
+            this.isVegetarianCheckBox.Location = new System.Drawing.Point(377, 178);
             this.isVegetarianCheckBox.Name = "isVegetarianCheckBox";
             this.isVegetarianCheckBox.Size = new System.Drawing.Size(348, 14);
             this.isVegetarianCheckBox.TabIndex = 11;
@@ -236,7 +241,7 @@
             // 
             this.fullNameOutputLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.fullNameOutputLabel.AutoSize = true;
-            this.fullNameOutputLabel.Location = new System.Drawing.Point(377, 177);
+            this.fullNameOutputLabel.Location = new System.Drawing.Point(377, 207);
             this.fullNameOutputLabel.Name = "fullNameOutputLabel";
             this.fullNameOutputLabel.Size = new System.Drawing.Size(348, 15);
             this.fullNameOutputLabel.TabIndex = 12;
@@ -246,11 +251,29 @@
             // 
             this.ageOutputLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ageOutputLabel.AutoSize = true;
-            this.ageOutputLabel.Location = new System.Drawing.Point(377, 207);
+            this.ageOutputLabel.Location = new System.Drawing.Point(377, 237);
             this.ageOutputLabel.Name = "ageOutputLabel";
             this.ageOutputLabel.Size = new System.Drawing.Size(348, 15);
             this.ageOutputLabel.TabIndex = 13;
             this.ageOutputLabel.Text = "label2";
+            // 
+            // dateOfBirthLabel2
+            // 
+            this.dateOfBirthLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateOfBirthLabel2.AutoSize = true;
+            this.dateOfBirthLabel2.Location = new System.Drawing.Point(23, 147);
+            this.dateOfBirthLabel2.Name = "dateOfBirthLabel2";
+            this.dateOfBirthLabel2.Size = new System.Drawing.Size(348, 15);
+            this.dateOfBirthLabel2.TabIndex = 14;
+            this.dateOfBirthLabel2.Text = "Date of Birth (as Text)";
+            // 
+            // dateOfBirthTextBox
+            // 
+            this.dateOfBirthTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateOfBirthTextBox.Location = new System.Drawing.Point(377, 143);
+            this.dateOfBirthTextBox.Name = "dateOfBirthTextBox";
+            this.dateOfBirthTextBox.Size = new System.Drawing.Size(348, 23);
+            this.dateOfBirthTextBox.TabIndex = 15;
             // 
             // MainWindow
             // 
@@ -288,5 +311,7 @@
         private System.Windows.Forms.CheckBox isVegetarianCheckBox;
         private System.Windows.Forms.Label fullNameOutputLabel;
         private System.Windows.Forms.Label ageOutputLabel;
+        private System.Windows.Forms.Label dateOfBirthLabel2;
+        private System.Windows.Forms.TextBox dateOfBirthTextBox;
     }
 }

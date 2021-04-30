@@ -18,6 +18,7 @@ namespace Guiuiui.WinForms.TestApplication.Windows
             this.personViewModel.BindProperty(p => p.FirstName, (p, v) => p.FirstName = v).ToTextBox(this.firstNameTextBox);
             this.personViewModel.BindProperty(p => p.Gender, (p, v) => p.Gender = v).ToComboBox(this.genderComboBox);
             this.personViewModel.BindProperty(p => p.DateOfBirth, (p, v) => p.DateOfBirth = v).ToDateTimePicker(this.dateOfBirthPicker);
+            this.personViewModel.BindProperty(p => p.DateOfBirth, (p, v) => p.DateOfBirth = v).ToTextBox(this.dateOfBirthTextBox);
             this.personViewModel.BindProperty(p => p.IsVegetarian, (p, v) => p.IsVegetarian = v).ToCheckBox(this.isVegetarianCheckBox);
             this.personViewModel.BindPropertyReadOnly(p => p.FullName).ToLabel(this.fullNameOutputLabel);
             this.personViewModel.BindPropertyReadOnly(p => p.Age).ToLabel(this.ageOutputLabel);
