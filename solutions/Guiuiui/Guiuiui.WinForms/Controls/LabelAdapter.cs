@@ -21,16 +21,6 @@ namespace Guiuiui.WinForms.Controls
         /// <summary>
         /// Initializes a new instance of the <see cref="LabelAdapter{TValue}"/> class.
         /// </summary>
-        public LabelAdapter(Label label)
-            : this(
-                  label,
-                  ToolBox.TextConverters.GetTextConverter<TValue>())
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LabelAdapter{TValue}"/> class.
-        /// </summary>
         public LabelAdapter(
             Label label,
             ITextConverter<TValue> textConverter)
