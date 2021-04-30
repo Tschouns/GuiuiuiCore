@@ -127,7 +127,7 @@ namespace Guiuiui.Common.Tests
             var mockControl = new MockDataControlAdapter<string>(value => displayedValue = value);
 
             candidate.BindPropertyReadOnly(p => p.Name).ToControl(mockControl);
-            
+
             var model = new Person
             {
                 Name = "Foo"

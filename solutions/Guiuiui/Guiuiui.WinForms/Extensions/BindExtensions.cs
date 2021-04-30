@@ -45,7 +45,7 @@ namespace Guiuiui.WinForms.Extensions
         {
             ArgumentChecks.AssertNotNull(bind, nameof(bind));
             ArgumentChecks.AssertNotNull(comboBox, nameof(comboBox));
-            
+
             var textConverter = ToolBox.TextConverters.GetTextConverter<TPropertyType>();
 
             bind.ToControl(new ComboBoxAdapter<TPropertyType>(comboBox, textConverter));
